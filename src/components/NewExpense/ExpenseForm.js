@@ -48,13 +48,14 @@ function ExpenseForm(props) {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("")
     setEnteredDate("")
+    props.hideNewExpenseForm();
   };
   return (
     <form onSubmit={submitHandler}>
@@ -89,6 +90,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="reset" onClick={props.hideNewExpenseForm}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
